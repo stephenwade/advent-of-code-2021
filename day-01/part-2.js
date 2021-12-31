@@ -1,21 +1,31 @@
 /*
-What is the product of the three entries that sum to 2020?
+Consider sums of a three-measurement sliding window. How many sums are larger
+than the previous sum?
 */
 
 import readFile from '../read-file.js';
 
-const expenseReport = new Set();
+const measurements = [];
 await readFile(new URL('./input.txt', import.meta.url), (line) => {
-  expenseReport.add(Number(line));
+  measurements.push(Number(line));
 });
 
-for (const num of expenseReport) {
-  const target = 2020 - num;
-  for (const num2 of expenseReport) {
-    const num3 = target - num2;
-    if (expenseReport.has(num3)) {
-      console.log(num * num2 * num3);
-      process.exit(0);
-    }
+function* getWindows() {
+  for (let i = 2; i < measurements.length; i += 1) {
+    yield [measurements[i - 2], measurements[i - 1], measurements[i]];
   }
 }
+
+const windows = getWindows();
+
+const add = (a, b) => a + b;
+
+let previousSum = windows.next().value.reduce(add);
+let result = 0;
+for (const window of windows) {
+  const sum = window.reduce(add);
+  if (sum > previousSum) result += 1;
+  previousSum = sum;
+}
+
+console.log(result);

@@ -1,19 +1,19 @@
 /*
-Find the two entries that sum to 2020; what do you get if you multiply them
-together?
+How many measurements are larger than the previous measurement?
 */
 
 import readFile from '../read-file.js';
 
-const expenseReport = new Set();
+const measurements = [];
 await readFile(new URL('./input.txt', import.meta.url), (line) => {
-  expenseReport.add(Number(line));
+  measurements.push(Number(line));
 });
 
-for (const num of expenseReport) {
-  const other = 2020 - num;
-  if (expenseReport.has(other)) {
-    console.log(num * other);
-    break;
-  }
+let previous = measurements[0];
+let result = 0;
+for (const num of measurements.slice(1)) {
+  if (num > previous) result += 1;
+  previous = num;
 }
+
+console.log(result);
