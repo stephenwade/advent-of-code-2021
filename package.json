@@ -1,0 +1,35 @@
+{
+  "name": "advent-of-code-2021",
+  "version": "1.0.0",
+  "description": "Advent of Code 2021",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephenwade/advent-of-code-2021.git"
+  },
+  "private": true,
+  "author": "Stephen Wade <stephen@stephenwade.me>",
+  "homepage": "https://gitlab.com/stephenwade/advent-of-code-2021#readme",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint . --ignore-path .gitignore",
+    "format:eslint": "eslint . --fix --ignore-path .gitignore",
+    "format:prettier": "prettier \"**/*.js\" \"**/*.cjs\" --write --ignore-path .gitignore",
+    "format": "npm run format:prettier && npm run format:eslint",
+    "prepare": "husky install"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "8.5.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-prettier": "8.3.0",
+    "lint-staged": "12.1.4",
+    "prettier": "2.5.1",
+    "husky": "7.0.4"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
