@@ -6,3 +6,4 @@ This is my repository for [Advent of Code 2021](https://adventofcode.com/2021).
 - [Day 4](day-04/)
 - [Day 5](day-05/)
 - [Day 6](day-06/)
+- [Day 7](day-07/)
