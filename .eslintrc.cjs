@@ -8,6 +8,7 @@ module.exports = {
     'import/extensions': ['error', 'always'],
     'no-console': 'off',
     'prefer-destructuring': 'off',
+    'max-classes-per-file': 'off',
 
     // eslint-config-airbnb-base restricts for of loops, which we want to allow. we can't cherry pick it out, so we have to copy over the existing rules
     'no-restricted-syntax': [
